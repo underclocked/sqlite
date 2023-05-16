@@ -365,8 +365,8 @@ if(WIN32_HEAP_CREATE)
 endif()
 
 if(BUILD_WITH_XPSDK)
-    add_definitions(-DSQLITE_OS_WINRT=0 
-    -D_WIN32_WINNT=0x0502 
+    add_definitions(-DSQLITE_OS_WINRT=0
+    -D_WIN32_WINNT=0x0502
     -DWINVER=0x0502)
 endif()
 
@@ -381,7 +381,7 @@ if(RECOMMENDED_OPTIONS)
         -DSQLITE_OMIT_SHARED_CACHE
         -DSQLITE_USE_ALLOCA
     -DSQLITE_DEFAULT_MEMSTATUS=0)
-endif()        
+endif()
 
 if(ENABLE_DEBUG)
     add_definitions(-DSQLITE_DEBUG=1
