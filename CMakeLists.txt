@@ -488,7 +488,7 @@ if(ENABLE_SHARED)
     add_library(sqlite3-shared SHARED ${SQLITE3_LIB_SRC})
     target_compile_definitions(sqlite3-shared PRIVATE ${SQLITE_API_DECL})
     target_link_libraries(sqlite3-shared ${SQLITE3_DEP_LIBRARIES})
-    target_include_directories(sqlite3-shared PUBLIC ${CMAKE_REQUIRED_INCLUDES})
+    target_include_directories(sqlite3-shared PUBLIC ${CMAKE_INSTALL_PREFIX}/include)
     set_target_properties(sqlite3-shared PROPERTIES
         OUTPUT_NAME ${SHAREDLIB_PREFIX}${PROJECT_NAME}
         VERSION ${PROJECT_VERSION}
@@ -522,7 +522,7 @@ if(BUILD_SHELL)
     if(ENABLE_STATIC_SHELL)
         add_dependencies(sqlite3 sqlite3-static)
         target_link_libraries(sqlite3 sqlite3-static ${SQLITE3_DEP_LIBRARIES})
-        target_include_directories(sqlite3 sqlite3-static PUBLIC ${CMAKE_REQUIRED_INCLUDES})
+        target_include_directories(sqlite3 PUBLIC ${CMAKE_INSTALL_PREFIX}/include)
     else()
         add_dependencies(sqlite3 sqlite3-shared)
         target_link_libraries(sqlite3 sqlite3-shared)
@@ -530,9 +530,7 @@ if(BUILD_SHELL)
 
     if(UNIX)
         if(CMAKE_BUILD_TYPE STREQUAL Release)
-            add_custom_command(TARGET shell_app POST_BUILD
-                COMMAND ${CMAKE_STRIP} ${EXE_NAME}
-            )
+            set_target_properties(sqlite3 PROPERTIES LINK_FLAGS_RELEASE -s)
         endif()
     elseif(MSVC)
         foreach(flag CMAKE_C_FLAGS_RELEASE CMAKE_C_FLAGS_MINSIZEREL CMAKE_C_FLAGS_DEBUG)
