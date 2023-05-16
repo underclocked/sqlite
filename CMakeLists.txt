@@ -14,7 +14,6 @@ include(GNUInstallDirs)
 # build options and optional modules (https://www.sqlite.org/compile.html):
 
 option(ENABLE_SHARED             "Build shared library"                           ON)
-option(SHAREDLIB_PREFIX          "Prefix name for shared lib"                     "")
 option(ENABLE_STATIC             "Build static library"                           OFF)
 option(BUILD_SHELL               "Build SQLite3 shell application"                ON)
 option(ENABLE_STATIC_SHELL       "Statically link shell tool"                     ON)
@@ -426,7 +425,7 @@ else()
 endif()
 
 message(STATUS "Build shared library:                                 ${ENABLE_SHARED}")
-message(STATUS "Shared library name:                                  ${SHAREDLIB_PREFIX}${PROJECT_NAME}")
+message(STATUS "Shared library name:                                  ${CMAKE_SHARED_LIBRARY_PREFIX}${PROJECT_NAME}")
 message(STATUS "Build static library:                                 ${ENABLE_STATIC}")
 message(STATUS "Build shell tool:                                     ${BUILD_SHELL}")
 message(STATUS "Statically link shell tool:                           ${ENABLE_STATIC_SHELL}")
@@ -490,7 +489,7 @@ if(ENABLE_SHARED)
     target_link_libraries(sqlite3-shared ${SQLITE3_DEP_LIBRARIES})
     target_include_directories(sqlite3-shared PUBLIC ${CMAKE_INSTALL_PREFIX}/include)
     set_target_properties(sqlite3-shared PROPERTIES
-        OUTPUT_NAME ${SHAREDLIB_PREFIX}${PROJECT_NAME}
+        OUTPUT_NAME ${PROJECT_NAME}
         VERSION ${PROJECT_VERSION}
         SOVERSION ${PROJECT_VERSION_MAJOR})
 
