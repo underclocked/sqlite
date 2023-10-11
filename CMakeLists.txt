@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.18)
 
 project(sqlite3
-    VERSION   3.43.1
+    VERSION   3.43.2
     LANGUAGES C
     HOMEPAGE_URL "http://www.sqlite.org"
 )
