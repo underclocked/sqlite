@@ -506,6 +506,7 @@ if(ENABLE_STATIC)
     endif()
 
     add_library(sqlite3-static STATIC ${SQLITE3_LIB_SRC})
+    target_include_directories(sqlite3-static PUBLIC ${CMAKE_INSTALL_PREFIX}/include)
     set_target_properties(sqlite3-static PROPERTIES
         OUTPUT_NAME ${PROJECT_NAME}${NAME_FIX_DECORATOR})
 
