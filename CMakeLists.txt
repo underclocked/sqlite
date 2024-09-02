@@ -13,9 +13,9 @@ include(GNUInstallDirs)
 
 # build options and optional modules (https://www.sqlite.org/compile.html):
 
-option(ENABLE_SHARED             "Build shared library"                           ON)
-option(ENABLE_STATIC             "Build static library"                           OFF)
-option(BUILD_SHELL               "Build SQLite3 shell application"                ON)
+option(ENABLE_SHARED             "Build shared library"                           OFF)
+option(ENABLE_STATIC             "Build static library"                           ON)
+option(BUILD_SHELL               "Build SQLite3 shell application"                OFF)
 option(ENABLE_STATIC_SHELL       "Statically link shell tool"                     ON)
 option(ENABLE_DEBUG              "Build with debugging features enabled"          OFF)
 option(ENABLE_EDITLINE           "Use BSD libedit"                                ON)
