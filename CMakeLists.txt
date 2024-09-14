@@ -398,7 +398,7 @@ if(WIN32)
     add_definitions(
         -DSQLITE_ENABLE_OFFSET_SQL_FUNC=1
         -DSQLITE_ENABLE_BYTECODE_VTAB=1
-        -DSQLITE_WIN32_USE_UUID=1)
+        -DSQLITE_WIN32_USE_UUID=0)
 
     set(UUID_LIBRARIES Rpcrt4.lib)
 endif()
