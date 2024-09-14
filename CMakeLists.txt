@@ -501,9 +501,9 @@ if(ENABLE_SHARED)
 endif()
 
 if(ENABLE_STATIC)
-    if(WIN32)
-        set(NAME_FIX_DECORATOR "_s")
-    endif()
+    # if(WIN32)
+    #     set(NAME_FIX_DECORATOR "_s")
+    # endif()
 
     add_library(sqlite3-static STATIC ${SQLITE3_LIB_SRC})
     target_include_directories(sqlite3-static PUBLIC ${CMAKE_INSTALL_PREFIX}/include)
